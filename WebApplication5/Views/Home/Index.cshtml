@@ -1,0 +1,45 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Продуктовый магазин</title>
+</head>
+
+<body>
+    <div>
+        <h3>Список продуктов</h3>
+        <h4><a href="/Home/Add" title="Нажмите для добавления новых продуктов">Добавить новый продукт</a></h4>
+        <table>
+            <tr>
+                <td><p><b>Id</b></p></td>
+                <td><p><b>Название продукта</b></p></td>
+                <td><p><b>Описание продукта</b></p></td>
+                <td><p><b>Цена</b></p></td>
+                <th colspan="2"><p><b>Внести правки</b></p></th>
+            </tr>
+            @foreach (var elem in ViewBag.Products)
+            {
+                <tr>
+                    <td><p>@elem.Id</p></td>
+                    <td><p>@elem.Name</p></td>
+                    <td><p>@elem.Description</p></td>
+                    <td><p>@elem.Price</p></td>
+                    <td><p><a href="/Home/Edit/@elem.Id" title="Нажмите для перехода к редактированию">Редактировать</a></p></td>
+                    <td><p><a href="/Home/Delete/@elem.Id" title="Нажмите, чтобы удалить">&times;</a></p></td>
+                </tr>
+            }
+        </table>
+        @using (Html.BeginForm("GoHomePage", "Home"))
+        {
+            <br />
+            <br />
+            <input type="submit" name="Cancel" value="Вернуться на страницу авторизации" />
+        }
+    </div>
+</body>
+</html>

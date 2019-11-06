@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Редактировать продукт";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model WebApplication5.Models.Product
+
+<h2>Продукт</h2>
+
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post))
+{
+    <fieldset>
+        @Html.HiddenFor(model => model.Id)
+        <p>
+            @Html.LabelFor(model => model.Name, "Наименование продукта")
+            <br />
+            @Html.EditorFor(model => model.Name)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Description, "Описание продукта")
+            <br />
+            @Html.EditorFor(model => model.Description)
+        </p>
+        <p>
+            @Html.LabelFor(model => model.Price, "Цена")
+            <br />
+            @Html.EditorFor(model => model.Price)
+        </p>
+        <p><input type="submit" value="Отправить" /></p>
+    </fieldset>
+}
+
+<br />
+@using (Html.BeginForm("Cancel", "Home"))
+{
+    <input type="submit" name="Cancel" value="Отмена" />
+}

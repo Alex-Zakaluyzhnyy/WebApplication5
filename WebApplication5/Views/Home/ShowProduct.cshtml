@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Продуктовый магазин</title>
+</head>
+
+<body>
+    <div>
+        <h3>Список продуктов</h3>
+       
+        <table>
+            <tr>
+                <td><p><b>Id</b></p></td>
+                <td><p><b>Название продукта</b></p></td>
+                <td><p><b>Цена</b></p></td>
+            </tr>
+            @foreach (var elem in ViewBag.Products)
+            {
+                <tr>
+                    <td><p><a href="/Home/FindElem/@elem.Id" title="Нажмите для получения подробной информации">@elem.Id</a></p></td>
+                    <td><p>@elem.Name</p></td>
+                    <td><p>@elem.Price</p></td>
+                </tr>
+            }
+        </table>
+        @using (Html.BeginForm("GoHomePage", "Home"))
+        {
+            <br/>
+            <br/>
+            <input type="submit" name="Cancel" value="Вернуться на страницу авторизации" />
+        }
+    </div>
+</body>
+</html>

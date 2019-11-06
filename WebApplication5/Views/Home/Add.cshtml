@@ -1,0 +1,34 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model WebApplication5.Models.Product
+
+<h2>Новый продукт питания</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name, "Наименование продукта")
+    <p>
+        @Html.EditorFor(model => model.Name)
+        <br />
+    </p>
+    @Html.LabelFor(model => model.Description, "Описание продукта питания")
+    <p>
+        @Html.EditorFor(model => model.Description)
+        <br />
+    </p>
+    @Html.LabelFor(model => model.Price, "Цена")
+    <p>
+        @Html.EditorFor(model => model.Price)
+        <br>
+    </p>
+
+    <input type="submit" , value="Добавить" />
+}
+
+<br />
+@using (Html.BeginForm("Cancel", "Home"))
+{
+    <input type="submit" name="Cancel" value="Отмена" />
+}

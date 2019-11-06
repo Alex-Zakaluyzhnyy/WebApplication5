@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model WebApplication5.Models.Product
+
+<h2>Информация о продукте</h2>
+
+<table>
+    <tr>
+        <td><b>Id</b></td>
+        <td><b>Наименование</b></td>
+        <td><b>Описание</b></td>
+        <td><b>Цена</b></td>
+    </tr>
+    <tr>
+        <td>@Html.DisplayFor(model => model.Id)</td>
+        <td>@Html.DisplayFor(model => model.Name)</td>
+        <td>@Html.DisplayFor(model => model.Description)</td>
+        <td>@Html.DisplayFor(model => model.Price)</td>
+    </tr>
+</table>
+
+
+<br />
+@using (Html.BeginForm("GoBack", "Home"))
+{
+    <input type="submit" name="Cancel" value="Вернуться обратно" />
+}
